@@ -21,7 +21,6 @@ namespace SecurePassword.Controllers
         public IEnumerable<Password> Get()
         {
             List<Password> usuarios = _context.Name.ToList();
-            usuarios[1].Name = "prueba";
             return usuarios.AsReadOnly();
         }
 
