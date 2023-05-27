@@ -21,6 +21,7 @@ namespace SecurePassword.Controllers
         public IEnumerable<Password> Get()
         {
             List<Password> usuarios = _context.Name.ToList();
+            usuarios[1].Name = "prueba";
             return usuarios.AsReadOnly();
         }
 
@@ -33,8 +34,10 @@ namespace SecurePassword.Controllers
 
         // POST api/<PasswordController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Password value)
         {
+            _context.Add(value);
+            _context.SaveChanges();
         }
 
         // PUT api/<PasswordController>/5
